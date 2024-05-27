@@ -1,10 +1,9 @@
+import { useItemsContext } from "../lib/hooks";
 import Logo from "./Logo";
 import Counter from "./Counter";
-import { useContext } from "react";
-import { ItemsContext } from "../contexts/ItemsContextProvider";
 
 const Header = () => {
-	const { numberOfItemsPacked, items } = useContext(ItemsContext);
+	const {items, numberOfItemsPacked} = useItemsContext();
 	return (
 		<header>
 			<Logo />
