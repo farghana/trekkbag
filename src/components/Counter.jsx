@@ -1,6 +1,5 @@
-import React from 'react'
 
-const Counter = ({totalNumberofItems, numberOfItemsPacked}) => {
+const Counter = ({numberOfItemsPacked, totalNumberofItems}) => {
   return (
     <div>
       <b>{numberOfItemsPacked}</b> / {totalNumberofItems}{" "}items packed

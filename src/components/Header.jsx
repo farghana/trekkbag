@@ -1,14 +1,19 @@
-import React from 'react'
-import Logo from './Logo'
-import Counter from './Counter'
+import Logo from "./Logo";
+import Counter from "./Counter";
+import { useContext } from "react";
+import { ItemsContext } from "../contexts/ItemsContextProvider";
 
-const Header = ({totalNumberofItems, numberOfItemsPacked}) => {
-  return (
-    <header>
-      <Logo />
-      <Counter totalNumberofItems={totalNumberofItems} numberOfItemsPacked={numberOfItemsPacked}/>
-    </header>
-  )
-}
+const Header = () => {
+	const { numberOfItemsPacked, items } = useContext(ItemsContext);
+	return (
+		<header>
+			<Logo />
+			<Counter
+				totalNumberofItems={items.length}
+				numberOfItemsPacked={numberOfItemsPacked()}
+			/>
+		</header>
+	);
+};
 
-export default Header
+export default Header;

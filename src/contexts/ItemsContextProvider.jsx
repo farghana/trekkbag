@@ -1,8 +1,11 @@
 import { defaultItems } from "../lib/constants";
-import { useEffect, useState } from "react";
+import { useEffect, useState,createContext } from "react";
+export const ItemsContext = createContext();
 
-const ItemsContextProvider = ({children}) => {
-  const [items, setItems] = useState(()=> JSON.parse(localStorage.getItem("items")) || defaultItems);
+const ItemsContextProvider = ({ children }) => {
+	const [items, setItems] = useState(
+		() => JSON.parse(localStorage.getItem("items")) || defaultItems
+	);
 	const handleAddItem = (newItem) => {
 		const newItems = [...items, newItem];
 		setItems(newItems);
@@ -54,9 +57,23 @@ const ItemsContextProvider = ({children}) => {
 		//save to localStorage
 		localStorage.setItem("items", JSON.stringify(items));
 	}, [items]);
-  return (
-   {children}
-  )
-}
+	return (
+		<ItemsContext.Provider
+			value={{
+				items,
+				handleAddItem,
+				handleDeleteItem,
+				handleToggleItem,
+				handleResetToInitial,
+				handleMarkAllAsComplete,
+				handleMarkAllAsIncomplete,
+				handleRemoveAllItems,
+        numberOfItemsPacked
+			}}
+		>
+			{children}
+		</ItemsContext.Provider>
+	);
+};
 
-export default ItemsContextProvider
+export default ItemsContextProvider;
