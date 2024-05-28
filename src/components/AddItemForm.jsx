@@ -5,12 +5,7 @@ const AddItemform = ({ onAddItem }) => {
 	const [itemText, setItemText] = useState("");
 	const submitHandler = (e) => {
 		e.preventDefault();
-		const newItem = {
-			id: new Date().getTime(),
-			name: itemText,
-			packed: false,
-		};
-		onAddItem(newItem);
+		onAddItem(itemText);
 		setItemText("");
 	};
 	return (

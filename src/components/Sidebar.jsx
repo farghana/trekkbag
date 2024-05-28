@@ -1,24 +1,13 @@
+import { useItemsStore } from "../stores/itemStores";
 import AddItemform from "./AddItemform";
-import ButtonGroup from "./ButtonGroup"
-import { useItemsContext } from "../lib/hooks";
+import ButtonGroup from "./ButtonGroup";
 
 const Sidebar = () => {
-	const {
-		handleAddItem,
-		handleRemoveAllItems,
-		handleResetToInitial,
-		handleMarkAllAsComplete,
-		handleMarkAllAsIncomplete,
-	} = useItemsContext();
+	const addItem = useItemsStore(state => state.addItem)
 	return (
 		<div className='sidebar'>
-			<AddItemform onAddItem={handleAddItem} />
-			<ButtonGroup
-				handleRemoveAllItems={handleRemoveAllItems}
-				handleResetToInitial={handleResetToInitial}
-				handleMarkAllAsComplete={handleMarkAllAsComplete}
-				handleMarkAllAsIncomplete={handleMarkAllAsIncomplete}
-			/>
+			<AddItemform onAddItem={addItem} />
+			<ButtonGroup />
 		</div>
 	);
 };
