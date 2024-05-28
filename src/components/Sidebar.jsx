@@ -3,7 +3,7 @@ import AddItemform from "./AddItemform";
 import ButtonGroup from "./ButtonGroup";
 
 const Sidebar = () => {
-	const addItem = useItemsStore(state => state.addItem)
+	const addItem = useItemsStore((state) => state.addItem);
 	return (
 		<div className='sidebar'>
 			<AddItemform onAddItem={addItem} />
